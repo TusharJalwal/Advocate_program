@@ -28,7 +28,7 @@ $dec_mobile = simple_decrypt($user['contact'], $key);
 <html>
 <head>
     <title>Welcome</title>
-   
+   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
