@@ -1,0 +1,14 @@
+CREATE TABLE users (
+    idPrimary INT(11) NOT NULL AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    enrollment_number VARCHAR(20) NOT NULL,
+    contact VARCHAR(100) DEFAULT NULL,
+    email_address VARCHAR(100) DEFAULT NULL,
+    address TEXT DEFAULT NULL,
+    dob DATE DEFAULT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    photograph VARCHAR(255) DEFAULT NULL,
+    PRIMARY KEY (idPrimary),
+    UNIQUE KEY (enrollment_number)
+);
