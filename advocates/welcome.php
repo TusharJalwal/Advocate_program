@@ -41,7 +41,8 @@ $dec_mobile = simple_decrypt($user['contact'], $key);
 <div class="container_wel">
     <?php if (!empty($user['photograph'])): ?>
         <div class="profile-photo">
-            <img src="<?php echo htmlspecialchars($user['photograph']); ?>" alt="User Logo">
+            <img src="<?php echo htmlspecialchars($user['photograph']); ?>" alt="User Photo">
+          
         </div>
     <?php endif; ?>
 
