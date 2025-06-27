@@ -23,7 +23,7 @@ if (isset($_FILES['photo']) && $_FILES['photo']['error'] === 0) {
     $file_type = $_FILES['photo']['type'];
     $file_name = $_FILES['photo']['name'];
 
-    $allowed_types = ['image/jpeg', 'image/png', 'image/gif'];
+    $allowed_types = ['image/jpeg', 'image/jpg'];
 
     if (!in_array($file_type, $allowed_types)) {
         header("Location: welcome.php?error=" . urlencode("Invalid file type. Only JPG, PNG, GIF allowed."));
