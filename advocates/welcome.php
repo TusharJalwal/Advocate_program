@@ -13,13 +13,13 @@ $sql = "SELECT * FROM users WHERE name='$username'";
 $result = mysqli_query($conn, $sql);
 $user = mysqli_fetch_assoc($result);
 
-// Check user exists
+
 if (!$user) {
     echo "User not found.";
     exit();
 }
 
-// Decryption
+
 $dec_email = simple_decrypt($user['email_address'], $key);
 $dec_mobile = simple_decrypt($user['contact'], $key);
 ?>
