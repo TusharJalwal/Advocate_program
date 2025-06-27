@@ -12,13 +12,12 @@ $username = $_SESSION['username'];
 $dob = isset($_POST['dob']) ? $_POST['dob'] : null;
 $photo_path = null;
 
-// === Step 1: Get current user data (old photo path) ===
 $sql = "SELECT photograph FROM users WHERE name = '" . mysqli_real_escape_string($conn, $username) . "'";
 $result = mysqli_query($conn, $sql);
 $user = mysqli_fetch_assoc($result);
 $old_photo_path = $user['photograph'] ?? null;
 
-// === Step 2: Handle file upload ===
+
 if (isset($_FILES['photo']) && $_FILES['photo']['error'] === 0) {
     $file_size = $_FILES['photo']['size'];
     $file_type = $_FILES['photo']['type'];
@@ -41,12 +40,12 @@ if (isset($_FILES['photo']) && $_FILES['photo']['error'] === 0) {
         mkdir($upload_folder, 0777, true);
     }
 
-    // === Step 3: Delete old photo (if it exists) ===
+    
     if (!empty($old_photo_path) && file_exists($old_photo_path)) {
         unlink($old_photo_path);
     }
 
-    // === Step 4: Save new photo ===
+    
     $photo_path = $upload_folder . time() . "_" . basename($file_name);
     if (!move_uploaded_file($_FILES['photo']['tmp_name'], $photo_path)) {
         header("Location: welcome.php?error=" . urlencode("Failed to upload file: $file_name"));
@@ -54,7 +53,6 @@ if (isset($_FILES['photo']) && $_FILES['photo']['error'] === 0) {
     }
 }
 
-// === Step 5: Build UPDATE query ===
 $update_fields = [];
 
 if (!empty($dob)) {
