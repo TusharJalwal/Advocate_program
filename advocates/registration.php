@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pincode = $_POST['pincode'];
     $address = $district . ',' . $state . ',' . $pincode;
 
-    // Server-side validation
+    
     if (!preg_match("/^[0-9]{10}$/", $contact)) {
         $errmsg[] = "Invalid contact number. It must be exactly 10 digits.";
     }
@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $enc_mobile = simple_encrypt($contact, $key);
     $enc_email = simple_encrypt($email, $key);
 
-    // Check for duplicates only if no format errors
+    
     if (count($errmsg) === 0) {
         $check = "SELECT * FROM users";
         $result = mysqli_query($conn, $check);
@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    // Insert into DB only if no errors
+    
     if (count($errmsg) === 0) {
         $sql = "INSERT INTO users (name, password, email_address, enrollment_number, contact, address)
                 VALUES ('$name', '$password', '$enc_email', '$enrollment', '$enc_mobile', '$address')";
